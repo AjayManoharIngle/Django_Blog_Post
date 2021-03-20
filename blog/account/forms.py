@@ -1,0 +1,35 @@
+from .models import BlogUser
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
+
+
+class SignupForm(UserCreationForm):
+    password2 = forms.CharField(
+        label='Confirm Password', widget=forms.PasswordInput(attrs={'placeholder': 'Enter your confirm password :', 'class': 'form-control'}))
+    password1 = forms.CharField(
+        label='Password', widget=forms.PasswordInput(attrs={'placeholder': 'Enter your  password :', 'class': 'form-control'}))
+
+    class Meta:
+        model = BlogUser
+        fields = ['username', 'first_name', 'last_name',
+                  'email', 'city', 'country', 'gender', 'profile_image']
+        labels = {'username': 'Enter Username ', 'first_name': 'Enter Your first  name',
+                  'last_name': 'Enter Your last name', 'email': 'Enter Your Email', }
+        widgets = {'username': forms.TextInput(
+            attrs={'placeholder': 'Enter your username:', 'class': 'form-control'}),
+            'first_name': forms.TextInput(
+            attrs={'placeholder': 'Enter  First name :', 'class': 'form-control'}),
+            'last_name': forms.TextInput(
+            attrs={'placeholder': 'Enter last name :', 'class': 'form-control'}),
+            'email': forms.TextInput(
+            attrs={'placeholder': 'Enter your email :', 'class': 'form-control'}),
+            'city': forms.TextInput(
+            attrs={'placeholder': 'Enter your city :', 'class': 'form-control'}),
+            # 'country': forms.TextInput(
+            # attrs={'placeholder': 'Select Your country :', 'class': 'custom-select'}),
+            # 'gender': forms.TextInput(
+            # attrs={'placeholder': 'Select Your Gender :', 'class': 'custom-select'}),
+            'profile_image': forms.FileInput(
+            attrs={'placeholder': 'choose your profile image :', 'class': 'form-control'}),
+        }
