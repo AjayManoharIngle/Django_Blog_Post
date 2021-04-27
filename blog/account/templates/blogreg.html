@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %} register {% endblock title %}
 {% block basecss %}
 <link rel="stylesheet" href="{% static 'css/blogreg.css' %}">
 {% endblock basecss %}
@@ -31,7 +32,8 @@
         </div>
         <input class="btn btn-primary" type="submit" value="Register">
         <div class="text-center" style="color: black; margin-top: 5px; margin-bottom: 5px;">Already have an account? <a
-                href="#" style="color: black; text-decoration: none; margin-top: 5px; margin-bottom: 5px;">Login
+                href="{% url 'login' %}"
+                style="color: black; text-decoration: none; margin-top: 5px; margin-bottom: 5px;">Login
                 here</a></div>
     </div>
 

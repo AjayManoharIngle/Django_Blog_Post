@@ -21,8 +21,12 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', v.signup),
-    path('api/', include('account.api.urls'))
+    path('', v.signup, name="signup"),
+    path('login/', v.user_login, name="login"),
+    path('profile/', v.profile, name="userprofile"),
+    path('api/', include('account.api.urls')),
+    path('logout/', v.user_logout, name="logg"),
+    path('changepass/', v.user_change_pass, name="changepass"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

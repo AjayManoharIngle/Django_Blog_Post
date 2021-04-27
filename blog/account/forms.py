@@ -1,6 +1,6 @@
 from .models import BlogUser
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
 
 
@@ -26,10 +26,18 @@ class SignupForm(UserCreationForm):
             attrs={'placeholder': 'Enter your email :', 'class': 'form-control'}),
             'city': forms.TextInput(
             attrs={'placeholder': 'Enter your city :', 'class': 'form-control'}),
-            # 'country': forms.TextInput(
-            # attrs={'placeholder': 'Select Your country :', 'class': 'custom-select'}),
-            # 'gender': forms.TextInput(
-            # attrs={'placeholder': 'Select Your Gender :', 'class': 'custom-select'}),
             'profile_image': forms.FileInput(
             attrs={'placeholder': 'choose your profile image :', 'class': 'form-control'}),
         }
+
+
+class EditUserProfileForm(UserChangeForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name',
+                  'email', 'date_joined', 'last_login']
+        labels = {'username': 'Enter Username ', 'first_name': 'Enter Your first  name',
+                  'last_name': 'Enter Your last name', 'email': 'Enter Your Email', }
+        exclude = ['username']

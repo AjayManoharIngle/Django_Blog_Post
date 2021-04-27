@@ -7,5 +7,5 @@ from django.contrib.auth.admin import UserAdmin
 admin.site.register(BlogUser, UserAdmin)
 UserAdmin.fieldsets += (
     "Custom Detail:", {'fields': (
-        'city', 'country', 'gender', 'profile_image',)}
+        'city', 'country', 'gender', 'profile_image',), }
 ),
